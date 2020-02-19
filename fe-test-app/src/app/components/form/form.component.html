@@ -1,0 +1,20 @@
+<div fxFlex="100" fxFill class="sec1">
+<form [formGroup]="colorForm" colorForm="ngForm" >
+    <label for="color">Please enter the color value</label>
+    <input type="text" id="color" required placeholder="Please enter the color value" formControlName="color" (keyup)="updateColor()"/>
+
+    <div *ngIf="colorForm.get('color').invalid && (colorForm.get('color').dirty || colorForm.get('color').touched)"
+        class="alert alert-danger">
+
+    <div *ngIf="colorForm.get('color').errors.required">
+        Color value is required.
+    </div>
+    <div *ngIf="colorForm.get('color').errors.minlength">
+        Color value min length is 3 characters
+    </div>
+    <div *ngIf="colorForm.get('color').errors.forbiddenValue">
+        Color value invalid
+    </div>
+    </div>
+</form>
+</div>
