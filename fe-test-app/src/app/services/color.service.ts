@@ -10,7 +10,7 @@ export class ColorService {
   color$: Observable<Color> = this.colorSubject.asObservable();
 
   update(value: string) {
-    if (value.length < 4 || value.length > 7) {
+    if (value.length < 3 || value.length >= 8) {
       return 'Value is not in the required length';
     }
     if (value[0] !== '#') { value = '#' + value; }

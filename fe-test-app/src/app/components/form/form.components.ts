@@ -19,6 +19,9 @@ export class FormComponent {
   constructor(public service: ColorService) {
     this.service.color$.subscribe(uc => {
       this.userColor = uc;
+      if (typeof this.colorForm !== 'undefined') {
+        this.colorForm.get('color').setValue(this.userColor.hex);
+      }
     });
 
     this.colorForm = new FormGroup({
