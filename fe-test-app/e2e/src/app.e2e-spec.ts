@@ -8,9 +8,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('Should display ddd color', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('fe-test-app app is running!');
+    expect(page.getColor()).toEqual('rgba(221, 221, 221, 1)');
   });
 
   afterEach(async () => {

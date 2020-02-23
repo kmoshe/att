@@ -19,11 +19,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
   }
   ngOnInit(): void {
-
-  }
-
-  constructor(public service: ColorService) {
-    this.service.color$.subscribe(uc => {
+    this.color$.subscribe(uc => {
       this.userColor = uc;
     });
 
@@ -36,12 +32,13 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
+  constructor(public service: ColorService) {
+    this.color$ = this.service.getColor();
+  }
+
   updateColor() {
     if (!this.colorForm.invalid) {
-      console.log('ok');
       this.service.update(this.colorForm.value.color);
-    } else {
-      console.log('not ok ');
-    }
+    } 
   }
 }

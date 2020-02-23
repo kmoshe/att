@@ -4,16 +4,16 @@ describe('ColorService', () => {
   beforeEach(() => { service = new ColorService(); });
 
   it('#update should return min length not met', () => {
-    expect(service.update('r')).toBe('Value is not in the required length');
+    expect(service.update('r').statusCode).toBe(500);
   });
 
   it('#update should return empty', () => {
-    expect(service.update('#ddd')).toBe('');
+    expect(service.update('#ddd').statusCode).toBe(200);
   });
 
   it('color$ should return value from observable',
     (done: DoneFn) => {
-      service.color$.subscribe(color => {
+      service.getColor().subscribe(color => {
         expect(color).toEqual({ hex: '#fff'});
         done();
       });

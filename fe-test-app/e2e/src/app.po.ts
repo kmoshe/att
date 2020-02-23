@@ -5,7 +5,9 @@ export class AppPage {
     return browser.get(browser.baseUrl) as Promise<unknown>;
   }
 
-  getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText() as Promise<string>;
+  getColor() {
+    return element(by.id('color')).clear()
+      .then(() => element(by.id('color')).sendKeys('ddd'))
+      .then(() => element(by.id('colorDiv')).getCssValue('background-color'));
   }
 }

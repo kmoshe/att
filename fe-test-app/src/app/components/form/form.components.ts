@@ -16,8 +16,9 @@ export class FormComponent {
   userColor: Color;
   color$: Observable<Color>;
 
-  constructor(public service: ColorService) {
-    this.service.color$.subscribe(uc => {
+  constructor(public service: ColorService) { 
+    this.color$ = this.service.getColor();
+    this.color$.subscribe(uc => {
       this.userColor = uc;
       if (typeof this.colorForm !== 'undefined') {
         this.colorForm.get('color').setValue(this.userColor.hex);
